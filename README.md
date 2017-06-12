@@ -37,7 +37,7 @@ belongs_to :prototype
 ### table
 |column|type|constraint|index|
 |:---:|:---:|:---:|:---:|
-|image|string|null:false|-|
+|content|string|null:false|-|
 |prototype_id|integer|foreign_key :true|-|
 
 ## likes table
