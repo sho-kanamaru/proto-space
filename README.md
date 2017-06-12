@@ -41,6 +41,7 @@ belongs_to :prototype
 |:---:|:---:|:---:|:---:|
 |content|string|null:false|-|
 |prototype_id|integer|foreign_key :true|-|
+|status|integer|null:false|-|
 
 ## likes table
 ### association
