@@ -1,24 +1,67 @@
-# README
+proto-space DB設計
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Tables and Association of Protospace
 
-Things you may want to cover:
+## users table
+### association
+has_many :comments
+has_many :prototypes
+has_many :likes
 
-* Ruby version
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|name|string|null:false|-|
+|image|string|-|-|
+|group|string|-|-|
+|profile|text|-|-|
 
-* System dependencies
+## prototypes table
+### association
+has_many :comments, dependent: :destroy
+has_many :capturedimages, dependent: :destroy
+has_many :likes, dependent: :destroy
+belongs_to :user
 
-* Configuration
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|title|string|null:false|-|
+|catch_copy|text|-|-|
+|concept|text|-|-|
+|user_id|integer|foreign_key :true|-|
+|likes_count|integer|-|-|
 
-* Database creation
+## capturedimages table
+### association
+belongs_to :prototype
 
-* Database initialization
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|image|string|null:false|-|
+|prototype_id|integer|foreign_key :true|-|
 
-* How to run the test suite
+## likes table
+### association
+belongs_to :prototype, counter_cache: :likes_count
+belongs_to :user
 
-* Services (job queues, cache servers, search engines, etc.)
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|user_id|integer|foreign_key :true|-|
+|prototype_id|integer|foreign_key :true|-|
 
-* Deployment instructions
+## comments table
+### association
+belongs_to user
+belongs_to prototype
 
-* ...
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|content|text|null:false|-|
+|user_id|integer|foreign_key :true|-|
+|prototype_id|integer|foreign_key :true|-|
+
