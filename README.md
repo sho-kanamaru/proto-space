@@ -17,7 +17,7 @@ has_many :likes
 ## prototypes table
 ### association
 has_many :comments, dependent: :destroy  
-has_many :capturedimages, dependent: :destroy  
+has_many :captured_images, dependent: :destroy  
 has_many :likes, dependent: :destroy  
 belongs_to :user  
 
@@ -30,7 +30,7 @@ belongs_to :user
 |user_id|integer|foreign_key :true|-|
 |likes_count|integer|-|-|
 
-## capturedimages table
+## captured_images table
 ### association
 belongs_to :prototype  
 
