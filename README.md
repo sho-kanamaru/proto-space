@@ -13,6 +13,8 @@ has_many :likes
 |image|string|-|-|
 |group|string|-|-|
 |profile|text|-|-|
+|email|string|null:false, unique: true|-|
+|password|string|null:false, unique: true|-|
 
 ## prototypes table
 ### association
