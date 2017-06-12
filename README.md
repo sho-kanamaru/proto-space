@@ -1,12 +1,10 @@
-proto-space DB設計
-
 # Tables and Association of Protospace
 
 ## users table
 ### association
-has_many :comments
-has_many :prototypes
-has_many :likes
+has_many :comments  
+has_many :prototypes  
+has_many :likes  
 
 ### table
 |column|type|constraint|index|
@@ -18,10 +16,10 @@ has_many :likes
 
 ## prototypes table
 ### association
-has_many :comments, dependent: :destroy
-has_many :capturedimages, dependent: :destroy
-has_many :likes, dependent: :destroy
-belongs_to :user
+has_many :comments, dependent: :destroy  
+has_many :capturedimages, dependent: :destroy  
+has_many :likes, dependent: :destroy  
+belongs_to :user  
 
 ### table
 |column|type|constraint|index|
@@ -34,7 +32,7 @@ belongs_to :user
 
 ## capturedimages table
 ### association
-belongs_to :prototype
+belongs_to :prototype  
 
 ### table
 |column|type|constraint|index|
@@ -44,8 +42,8 @@ belongs_to :prototype
 
 ## likes table
 ### association
-belongs_to :prototype, counter_cache: :likes_count
-belongs_to :user
+belongs_to :prototype, counter_cache: :likes_count  
+belongs_to :user  
 
 ### table
 |column|type|constraint|index|
@@ -55,8 +53,8 @@ belongs_to :user
 
 ## comments table
 ### association
-belongs_to user
-belongs_to prototype
+belongs_to user  
+belongs_to prototype  
 
 ### table
 |column|type|constraint|index|
