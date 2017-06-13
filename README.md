@@ -1,24 +1,68 @@
-# README
+# Tables and Association of Protospace
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## users table
+### association
+has_many :comments  
+has_many :prototypes  
+has_many :likes  
 
-Things you may want to cover:
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|name|string|null:false|-|
+|image|string|-|-|
+|group|string|-|-|
+|profile|text|-|-|
+|email|string|null:false, unique: true|-|
+|password|string|null:false, unique: true|-|
 
-* Ruby version
+## prototypes table
+### association
+has_many :comments, dependent: :destroy  
+has_many :captured_images, dependent: :destroy  
+has_many :likes, dependent: :destroy  
+belongs_to :user  
 
-* System dependencies
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|title|string|null:false|-|
+|catch_copy|text|-|-|
+|concept|text|-|-|
+|user_id|integer|foreign_key :true|-|
+|likes_count|integer|-|-|
 
-* Configuration
+## captured_images table
+### association
+belongs_to :prototype  
 
-* Database creation
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|content|string|null:false|-|
+|prototype_id|integer|foreign_key :true|-|
+|status|integer|null:false|-|
 
-* Database initialization
+## likes table
+### association
+belongs_to :prototype, counter_cache: :likes_count  
+belongs_to :user  
 
-* How to run the test suite
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|user_id|integer|foreign_key :true|-|
+|prototype_id|integer|foreign_key :true|-|
 
-* Services (job queues, cache servers, search engines, etc.)
+## comments table
+### association
+belongs_to user  
+belongs_to prototype  
 
-* Deployment instructions
+### table
+|column|type|constraint|index|
+|:---:|:---:|:---:|:---:|
+|content|text|null:false|-|
+|user_id|integer|foreign_key :true|-|
+|prototype_id|integer|foreign_key :true|-|
 
-* ...
