@@ -21,9 +21,11 @@
             %span.caret
           %ul.dropdown-menu{role: "menu"}
             %li
-              %a{href: "#"} Profile Edit
+              = link_to edit_user_path do
+                Profile Edit
             %li
-              %a{href: "#"} Logout
+              = link_to new_user_registration_path do
+                Logout
         %li
           .btn.btn-primary.navbar-btn
             %a{href: "/prototypes/new"}
