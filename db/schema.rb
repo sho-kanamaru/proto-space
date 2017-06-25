@@ -27,6 +27,7 @@ ActiveRecord::Schema.define(version: 20170625132214) do
     t.string   "image"
     t.string   "group"
     t.text     "profile",                limit: 65535
+    t.string   "work"
     t.datetime "created_at",                                        null: false
     t.datetime "updated_at",                                        null: false
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
