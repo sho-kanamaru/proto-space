@@ -22,7 +22,7 @@ class DeviseCreateUsers < ActiveRecord::Migration[5.0]
       t.string :image
       t.string :group
       t.text :profile
-      t.string :work
+      t.text :works
 
       ## Confirmable
       # t.string   :confirmation_token
