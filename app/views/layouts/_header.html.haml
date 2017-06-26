@@ -11,7 +11,7 @@
       %ul.nav.navbar-nav.navbar-right
         %li
           .btn.btn-primary.navbar-btn
-            %a{href: "/login"}
+            = link_to  new_user_session_path do
               Get Started
       //login
       %ul.nav.navbar-nav.navbar-right
@@ -21,9 +21,11 @@
             %span.caret
           %ul.dropdown-menu{role: "menu"}
             %li
-              %a{href: "#"} Profile Edit
+              = link_to edit_user_path(1) do
+                Profile Edit
             %li
-              %a{href: "#"} Logout
+              = link_to new_user_registration_path do
+                Logout
         %li
           .btn.btn-primary.navbar-btn
             %a{href: "/prototypes/new"}
