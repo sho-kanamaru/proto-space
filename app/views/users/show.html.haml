@@ -12,16 +12,16 @@
             %i Projects
         .proto-user
           %span.degree
-            = current_user.group
+            = @user.group
         .row
           .col-md-6
             %h4 Profile
             %p
-              = current_user.profile
+              = @user.profile
           .col-md-6
             %h4 Works
             %p
-              = current_user.works
+              = @user.works
 .container.proto-list
   .row
     .col-sm-4.col-md-3.proto-content
