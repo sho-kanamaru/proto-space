@@ -7,13 +7,13 @@
     %a.navbar-brand(href="/")
       = image_tag("logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "36px")
     .navbar-collapse.collapse.navbar-responsive-collapse
-      -unless user_signed_in?
+      - unless user_signed_in?
         %ul.nav.navbar-nav.navbar-right
           %li
             .btn.btn-primary.navbar-btn
               = link_to  new_user_session_path do
                 Get Started
-      -else
+      - else
         %ul.nav.navbar-nav.navbar-right
           %li.dropdown
             %a.dropdown-toggle{'aria-expanded': 'true', 'data-toggle': 'dropdown', href: "#", role: 'button'}
