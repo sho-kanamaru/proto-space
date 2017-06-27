@@ -24,7 +24,7 @@
               = link_to edit_user_path(1) do
                 Profile Edit
             %li
-              = link_to new_user_registration_path do
+              = link_to destroy_user_session_path, method: :delete do
                 Logout
         %li
           .btn.btn-primary.navbar-btn
