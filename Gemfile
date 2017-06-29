@@ -12,6 +12,7 @@ gem 'jbuilder', '~> 2.5'
 gem 'haml-rails'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
+gem 'pry-rails'
 
 group :development, :test do
   gem 'byebug', platform: :mri

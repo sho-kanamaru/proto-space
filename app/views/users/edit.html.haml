@@ -10,14 +10,12 @@
           %h2 Edit Profile
           .user-name_image.row
             .user-name.col-md-10
-              = f.text_field :nickname, placeholder: "Nickname"
+              = f.text_field :name, placeholder: "Nickname"
             .user-image.col-md-2.js-img-preview
               = f.button "Change Image", class: "btn-primary"
-              = f.file_field :avatar
+              = f.file_field :image
             .user-email
               = f.email_field :email, placeholder: "E-Mail"
-            .user-password
-              = f.password_field :password, placeholder: "Password"
         .col-md-12
           %h4 Member of
           .user-user-member.row
@@ -30,6 +28,6 @@
           %h4 Works
           .user-name_image.row
             .user-name.col-md-12
-              = f.text_area :work, cols: "30", rows: "4", placeholder: "Works"
+              = f.text_area :works, cols: "30", rows: "4", placeholder: "Works"
       .row.text-center.user-btn
         = f.submit 'Save', class: "btn btn-lg btn-primary btn-block"
