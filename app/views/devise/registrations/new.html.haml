@@ -1,5 +1,6 @@
 .container.user-new
   = form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+    = devise_error_messages!
     .col-md-8.col-md-offset-2
       %header.row.user-nav.row
         .col-md-12
@@ -26,4 +27,4 @@
           .user-name_image.row
             .user-name.col-md-12
               = f.text_area :works, cols: "30", rows: "4", placeholder: "Works"
-        = f.submit "Save", class: "row text-center user-btn btn btn-lg btn-primary btn-block",controller: :prototypes, action: :index
+        = f.submit "Save", class: "row text-center user-btn btn btn-lg btn-primary btn-block"
