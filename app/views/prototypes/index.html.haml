@@ -24,7 +24,7 @@
                 = prototype.title
               .proto-meta
                 .proto-user
-                  %a{href: "#"}
+                  = link_to user_path(prototype.user) do
                     by #{prototype.user.name}
                 .proto-posted
                   = prototype.created_at
