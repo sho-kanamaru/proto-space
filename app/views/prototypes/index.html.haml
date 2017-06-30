@@ -17,7 +17,7 @@
     .col-sm-4.col-md-3.proto-content
       .thumbnail
         - @prototypes.each do |prototype|
-          %a{href: "/prototypes/show"}
+          = link_to prototype_path(prototype) do
             = image_tag(prototype.get_main_content)
             .caption
               %h3
