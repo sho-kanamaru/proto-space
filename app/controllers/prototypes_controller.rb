@@ -16,7 +16,7 @@ class PrototypesController < ApplicationController
       redirect_to root_path, notice: "posted your prototype in successfully."
     else
       flash.now[:alert] = "cannot posted your prototype"
-      render "new"
+      render :new
     end
   end
 
