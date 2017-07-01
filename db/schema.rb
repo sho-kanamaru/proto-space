@@ -23,8 +23,8 @@ ActiveRecord::Schema.define(version: 20170630052944) do
 
   create_table "prototypes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "title",                     null: false
-    t.text     "catch_copy",  limit: 65535
-    t.text     "concept",     limit: 65535
+    t.text     "catch_copy",  limit: 65535, null: false
+    t.text     "concept",     limit: 65535, null: false
     t.integer  "user_id"
     t.integer  "likes_count"
     t.datetime "created_at",                null: false
