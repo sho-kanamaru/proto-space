@@ -11,6 +11,6 @@ class Prototype < ApplicationRecord
   end
 
   def get_main_content
-    captured_images.find_by(status: :main).content
+    captured_images.main.first.content
   end
 end
