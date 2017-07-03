@@ -37,6 +37,14 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def update
+    prototype= Prototype.find(params[:id])
+    if prototype.user_id == current_user.id
+      prototype.update(create_params)
+      redirect_to root_path, notice: "Prototype was successfully updated."
+    end
+  end
+
   private
     def create_params
       params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:id, :content, :status])
