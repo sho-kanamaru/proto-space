@@ -11,7 +11,7 @@ class PrototypesController < ApplicationController
   end
 
   def create
-    @prototype = Prototype.new(create_params)
+    @prototype = current_user.prototypes.new(create_params)
     if @prototype.save
       redirect_to root_path, notice: "posted your prototype in successfully."
     else
@@ -22,6 +22,6 @@ class PrototypesController < ApplicationController
 
   private
     def create_params
-      params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:content, :status]).merge(user_id: current_user.id)
+      params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:content, :status])
     end
 end
