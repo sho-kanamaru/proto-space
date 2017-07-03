@@ -23,12 +23,9 @@
       = image_tag("sample.png", class: 'img-responsive')
     .col-md-3
       %ul.proto-sub-list.list-group
-        %li.list-group-item
-          = image_tag("sample.png", class: 'img-responsive')
-        %li.list-group-item
-          = image_tag("sample.png", class: 'img-responsive')
-        %li.list-group-item
-          = image_tag("sample.png", class: 'img-responsive')
+        - @prototype.get_sub_contents.each do |image|
+          %li.list-group-item
+            = image_tag(image.content, class: 'img-responsive')
   .row.proto-description
     .col-md-3
       %h4 Catch Copy
