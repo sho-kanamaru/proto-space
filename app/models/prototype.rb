@@ -13,4 +13,8 @@ class Prototype < ApplicationRecord
   def get_main_content
     captured_images.main.first.content
   end
+
+  def get_sub_contents
+    captured_images.sub
+  end
 end
