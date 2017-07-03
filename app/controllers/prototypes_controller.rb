@@ -20,6 +20,10 @@ class PrototypesController < ApplicationController
     end
   end
 
+  def show
+    @prototype = Prototype.find(params[:id])
+  end
+
   private
     def create_params
       params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:content, :status]).merge(user_id: current_user.id)
