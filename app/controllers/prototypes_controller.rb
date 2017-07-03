@@ -29,6 +29,14 @@ class PrototypesController < ApplicationController
     @sub_images = @prototype.get_sub_contents
   end
 
+  def destroy
+    prototype = Prototype.find(params[:id])
+    if prototype.user_id == current_user.id
+      prototype.destroy
+      redirect_to root_path, notice: "Prototype was successfully deleted."
+    end
+  end
+
   private
     def create_params
       params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:id, :content, :status])
