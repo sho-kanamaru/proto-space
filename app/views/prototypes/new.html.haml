@@ -1,36 +1,41 @@
-%form.container.proto-new{action: ""}
-  .col-md-8.col-md-offset-2
-    %header.row.user-nav.row
-      .col-md-12
-        %input.proto-new-title{type: "text", placeholder: "Title"}/
-    .row
-      .col-md-12
-        .cover-image-upload
-          %input{type: "file"}/
-      .col-md-12
-        %ul.proto-sub-list.list-group
-          %li.list-group-item.col-md-4
-            .image-upload
-              %input{type: "file"}/
-          %li.list-group-item.col-md-4
-            .image-upload
-              %input{type: "file"}/
-          %li.list-group-item.col-md-4
-            .image-upload-plus
-              %span +
-    .row.proto-description
-      .col-md-12
-        %input{type: "text", placeholder: "Catch Copy"}/
-      .col-md-12
-        %textarea{name: "", cols: "30", rows: "4", placeholder: "Concept"}
-      .col-md-12
-        %h4 Tag List
-        .row
-          .col-md-3
-            %input{type: "text", placeholder: "Web Design"}/
-          .col-md-3
-            %input{type: "text", placeholder: "UI"}/
-          .col-md-3
-            %input{type: "text", placeholder: "Application"}/
-    .row.text-center.proto-btn
-      %button.btn.btn-lg.btn-primary.btn-block{type: "submit"} Publish
+.container.proto-new
+  = form_for @prototype do |f|
+    - if @prototype.errors.any?
+      %ul
+        - @prototype.errors.full_messages.each do |msg|
+          %li= msg
+    .col-md-8.col-md-offset-2
+      %header.row.user-nav.row
+        .col-md-12
+          .proto-new-title
+            = f.text_field :title, placeholder: "Title"
+      .row
+        .col-md-12
+          .cover-image-upload
+            = f.fields_for :captured_images do |image|
+              = image.file_field :content
+              = image.hidden_field :status, value: :main
+        .col-md-12
+          %ul.proto-sub-list.list-group
+            = render "subimage", f: f
+            = render "subimage", f: f
+
+            %li.list-group-item.col-md-4
+              .image-upload-plus
+                %span +
+      .row.proto-description
+        .col-md-12
+          = f.text_field :catch_copy, placeholder: "Catch Copy"
+        .col-md-12
+          = f.text_area :concept, cols: "30", rows: "4", placeholder: "Concept"
+        .col-md-12
+          %h4 Tag List
+          .row
+            .col-md-3
+              %input{type: "text", placeholder: "Web Design"}/
+            .col-md-3
+              %input{type: "text", placeholder: "UI"}/
+            .col-md-3
+              %input{type: "text", placeholder: "Application"}/
+      .row.text-center.proto-btn
+        = f.submit 'Publish', class: "btn btn-lg btn-primary btn-block"

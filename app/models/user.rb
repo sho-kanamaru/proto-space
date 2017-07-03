@@ -5,4 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatables
 
   validates :name, presence: true
+
+  has_many :prototypes
 end
