@@ -1,6 +1,7 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_prototype, except: [:index, :new, :create]
+  before_action :set_sub_images, only: [:edit, :update]
 
   def index
     @prototypes = Prototype.all
@@ -25,7 +26,6 @@ class PrototypesController < ApplicationController
   end
 
   def edit
-    @sub_images = @prototype.get_sub_contents
   end
 
   def destroy
@@ -36,9 +36,11 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    if @prototype.user_id == current_user.id
-      @prototype.update(create_params)
+    if @prototype.update(create_params)
       redirect_to root_path, notice: "Prototype was successfully updated."
+    else
+      flash.now[:alert] = "cannot updated your prototype"
+      render :edit
     end
   end
 
@@ -49,5 +51,9 @@ class PrototypesController < ApplicationController
 
     def set_prototype
       @prototype = Prototype.find(params[:id])
+    end
+
+    def set_sub_images
+      @sub_images = @prototype.get_sub_contents
     end
 end
