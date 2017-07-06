@@ -7,7 +7,7 @@
         %li
           = link_to 'delete', "/prototypes/#{prototype.id}", method: :delete
         %li
-          = link_to 'edit', "/prototypes/#{prototype.id}/edit", method: :get
+          = link_to 'edit', edit_prototype_path(prototype)
   .thumbnail
     = link_to prototype_path(prototype) do
       = image_tag(prototype.get_main_content)
