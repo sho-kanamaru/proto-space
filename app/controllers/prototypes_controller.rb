@@ -1,5 +1,6 @@
 class PrototypesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
+  before_action :set_prototype, except: [:index, :new, :create]
 
   def index
     @prototypes = Prototype.all
@@ -21,26 +22,22 @@ class PrototypesController < ApplicationController
   end
 
   def show
-    @prototype = Prototype.find(params[:id])
   end
 
   def edit
-    @prototype = Prototype.find(params[:id])
     @sub_images = @prototype.get_sub_contents
   end
 
   def destroy
-    prototype = Prototype.find(params[:id])
-    if prototype.user_id == current_user.id
-      prototype.destroy
+    if @prototype.user_id == current_user.id
+      @prototype.destroy
       redirect_to root_path, notice: "Prototype was successfully deleted."
     end
   end
 
   def update
-    prototype = Prototype.find(params[:id])
-    if prototype.user_id == current_user.id
-      prototype.update(create_params)
+    if @prototype.user_id == current_user.id
+      @prototype.update(create_params)
       redirect_to root_path, notice: "Prototype was successfully updated."
     end
   end
@@ -48,5 +45,9 @@ class PrototypesController < ApplicationController
   private
     def create_params
       params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:id, :content, :status])
+    end
+
+    def set_prototype
+      @prototype = Prototype.find(params[:id])
     end
 end
