@@ -5,7 +5,7 @@
         ACTION
       %ul.dropdown-menu
         %li
-          = link_to 'delete', "/prototypes/#{prototype.id}", method: :delete
+          = link_to 'delete', prototype_path(prototype), method: :delete
         %li
           = link_to 'edit', edit_prototype_path(prototype)
   .thumbnail
