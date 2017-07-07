@@ -32,6 +32,8 @@ class PrototypesController < ApplicationController
     if @prototype.user_id == current_user.id
       @prototype.destroy
       redirect_to root_path, notice: "Prototype was successfully deleted."
+    else
+      render :index, alert: "cannot deleted the prototype"
     end
   end
 
