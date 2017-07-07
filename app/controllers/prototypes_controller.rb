@@ -38,7 +38,7 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    if @prototype.update(create_params)
+    if @prototype.update(update_params)
       redirect_to root_path, notice: "Prototype was successfully updated."
     else
       flash.now[:alert] = "cannot updated your prototype"
@@ -48,6 +48,10 @@ class PrototypesController < ApplicationController
 
   private
     def create_params
+      params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:content, :status])
+    end
+
+    def update_params
       params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:id, :content, :status])
     end
 
