@@ -18,4 +18,8 @@ class Prototype < ApplicationRecord
   def get_sub_contents
     captured_images.sub
   end
+
+  def like_user(user_id)
+   likes.find_by(user_id: user_id)
+  end
 end
