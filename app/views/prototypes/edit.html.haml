@@ -9,13 +9,18 @@
       .row
         .col-md-12
           .cover-image-upload
-            = f.fields_for :captured_images do |image|
+            = f.fields_for :captured_images, @prototype.captured_images.main.first do |image|
               = image.file_field :content
               = image.hidden_field :status, value: :main
+
         .col-md-12
           %ul.proto-sub-list.list-group
-            = render "subimage", f: f
-            = render "subimage", f: f
+            - @sub_images.each do |sub_image|
+              %li.list-group-item.col-md-4
+                .image-upload
+                  = f.fields_for :captured_images, sub_image do |image|
+                    = image.file_field :content
+                    = image.hidden_field :status, value: :sub
 
             %li.list-group-item.col-md-4
               .image-upload-plus

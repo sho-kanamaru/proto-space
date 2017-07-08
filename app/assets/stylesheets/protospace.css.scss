@@ -149,6 +149,12 @@ body {
   z-index: 2;
 }
 
+.drop_menu_location{
+  position: absolute;
+  top: 10px;
+  left: 20px;
+}
+
 
 
 /* -- Ripple effect -------------------------------- */
@@ -289,6 +295,7 @@ body {
 }
 
 .proto-content {
+  position: relative;
   .thumbnail {
     border-radius: 0;
     padding: 0;

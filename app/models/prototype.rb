@@ -3,7 +3,7 @@ class Prototype < ApplicationRecord
 
   belongs_to :user
 
-  has_many :captured_images
+  has_many :captured_images, dependent: :destroy
   accepts_nested_attributes_for :captured_images, allow_destroy: true, reject_if: :reject_posts
 
   def reject_posts(attributed)
@@ -12,5 +12,9 @@ class Prototype < ApplicationRecord
 
   def get_main_content
     captured_images.main.first.content
+  end
+
+  def get_sub_contents
+    captured_images.sub
   end
 end
