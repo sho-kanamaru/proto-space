@@ -5,7 +5,7 @@ class CreatePrototypes < ActiveRecord::Migration[5.0]
       t.text :catch_copy, null: false
       t.text :concept, null: false
       t.references :user, foreign_key: true
-      t.integer :likes_count
+      t.integer :likes_count, default: 0
       t.timestamps
     end
   end

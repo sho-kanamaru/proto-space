@@ -31,13 +31,13 @@ ActiveRecord::Schema.define(version: 20170708080422) do
   end
 
   create_table "prototypes", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "title",                     null: false
-    t.text     "catch_copy",  limit: 65535, null: false
-    t.text     "concept",     limit: 65535, null: false
+    t.string   "title",                                 null: false
+    t.text     "catch_copy",  limit: 65535,             null: false
+    t.text     "concept",     limit: 65535,             null: false
     t.integer  "user_id"
-    t.integer  "likes_count"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.integer  "likes_count",               default: 0
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
     t.index ["user_id"], name: "index_prototypes_on_user_id", using: :btree
   end
 
