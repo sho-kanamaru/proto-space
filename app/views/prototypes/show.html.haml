@@ -47,10 +47,11 @@
       .comment_list
         = render @comments
 
-      = form_for [@prototype, @comment], html: {class: 'form-inline'}, remote: true do |f|
-        %h4 Write a comment
-        .row
-          .form-group.col-md-10
-            = f.text_area :content, class: "form-control", placeholder: "Your comments", rows: "3"
-          .form-group.col-md-2
-            = f.submit 'Comment', class: "btn btn-primary"
+      - if user_signed_in?
+        = form_for [@prototype, @comment], html: {class: 'form-inline'}, remote: true do |f|
+          %h4 Write a comment
+          .row
+            .form-group.col-md-10
+              = f.text_area :content, class: "form-control", placeholder: "Your comments", rows: "3"
+            .form-group.col-md-2
+              = f.submit 'Comment', class: "btn btn-primary"
