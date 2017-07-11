@@ -47,10 +47,10 @@
       .comment_list
         = render @comments
 
-      %form.form-inline{role: "form"}
+      = form_for [@prototype, @comment], html: {class: 'form-inline'}, remote: true do |f|
         %h4 Write a comment
         .row
           .form-group.col-md-10
-            %textarea.form-control{placeholder: "Your comments", rows: "3"}
+            = f.text_area :content, class: "form-control", placeholder: "Your comments", rows: "3"
           .form-group.col-md-2
-            %button.btn.btn-primary Comment
+            = f.submit 'Comment', class: "btn btn-primary"
