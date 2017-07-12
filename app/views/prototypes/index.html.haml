@@ -6,10 +6,10 @@
   .container
     .row
       %ul.nav.nav-pills.col-lg-11
-        %li{role: "presentation"}
+        %li.active{role: "presentation"}
           = link_to root_path do
             Popular PROTO
-        %li.active{role: "presentation"}
+        %li{role: "presentation"}
           = link_to prototypes_newest_index_path do
             Newest PROTO
       %button{type: "button", class: "btn btn-default col-lg-1"} View Tags
