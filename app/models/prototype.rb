@@ -3,6 +3,7 @@ class Prototype < ApplicationRecord
 
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   has_many :captured_images, dependent: :destroy
   accepts_nested_attributes_for :captured_images, allow_destroy: true, reject_if: :reject_posts
