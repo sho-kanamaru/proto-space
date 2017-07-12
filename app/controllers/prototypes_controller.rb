@@ -23,6 +23,7 @@ class PrototypesController < ApplicationController
   end
 
   def show
+    @like = Like.find_by(user_id: current_user, prototype_id: params[:id])
     @comment = Comment.new
     @comments = @prototype.comments.includes(:user)
   end
