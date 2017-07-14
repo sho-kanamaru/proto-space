@@ -4,7 +4,7 @@ class PrototypesController < ApplicationController
   before_action :set_sub_images, only: [:edit, :update]
 
   def index
-    @prototypes = Prototype.includes(:user).page(params[:page]).per(8).order("likes_count DESC")
+    @prototypes = Prototype.includes(:user).page(params[:page]).per(8).order(likes_count: :DESC)
   end
 
   def new
