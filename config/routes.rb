@@ -2,6 +2,10 @@ Rails.application.routes.draw do
   devise_for :users
   root 'prototypes#index'
 
+  namespace :prototypes do
+    resources :newest, only: :index
+  end
+
   resources :prototypes, except: :index do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: :create
