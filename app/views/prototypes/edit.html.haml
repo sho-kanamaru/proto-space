@@ -28,9 +28,10 @@
             - (3-@sub_images.size).times do
               = render "sub_hide_image", f: f
 
-            %li.list-group-item.col-md-4
-              .image-upload-plus
-                %span +
+            - if @sub_images.size != 3
+              %li.list-group-item.col-md-4#add-form
+                .image-upload-plus
+                  %span +
       .row.proto-description
         .col-md-12
           = f.text_field :catch_copy, placeholder: "Catch Copy"
