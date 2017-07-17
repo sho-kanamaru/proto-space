@@ -12,7 +12,7 @@
         %li{role: "presentation"}
           = link_to prototypes_newest_index_path do
             Newest PROTO
-      %button{type: "button", class: "btn btn-default col-lg-1"} View Tags
+      = link_to 'View Tags', tags_path, class: "btn btn-default col-lg-1"
 
 .container.proto-list
   .row
