@@ -2,6 +2,7 @@ class PrototypesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_prototype, except: [:index, :new, :create]
   before_action :set_sub_images, only: [:edit, :update]
+  before_action :set_placeholder, only: [:new, :edit]
 
   def index
     @prototypes = Prototype.includes(:user).page(params[:page]).like
@@ -64,5 +65,9 @@ class PrototypesController < ApplicationController
 
     def set_sub_images
       @sub_images = @prototype.get_sub_contents
+    end
+
+    def set_placeholder
+      @placeholder = ["Web Design", "UI", "Application"]
     end
 end
