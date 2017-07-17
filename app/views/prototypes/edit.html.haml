@@ -25,6 +25,8 @@
                       = image_tag sub_image.content, class: "current_image"
                       = image.file_field :content
                       = image.hidden_field :status, value: :sub
+            - (3-@sub_images.size).times do
+              = render "sub_hide_image", f: f
 
             %li.list-group-item.col-md-4
               .image-upload-plus
