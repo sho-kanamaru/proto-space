@@ -1,6 +1,8 @@
 class Prototype < ApplicationRecord
   validates :title, :catch_copy, :concept, presence: true
 
+  acts_as_taggable_on :tags
+
   belongs_to :user
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
