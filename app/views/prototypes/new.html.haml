@@ -10,12 +10,14 @@
         .col-md-12
           .cover-image-upload
             = f.fields_for :captured_images do |image|
-              = image.file_field :content
-              = image.hidden_field :status, value: :main
+              .js-main-image-uploader
+                = image.file_field :content, required: true
+                = image.hidden_field :status, value: :main
         .col-md-12
           %ul.proto-sub-list.list-group
-            = render "subimage", f: f
-            = render "subimage", f: f
+            = render "sub_appear_image", f: f
+            = render "sub_appear_image", f: f
+            = render "sub_hide_image", f: f
 
             %li.list-group-item.col-md-4
               .image-upload-plus
