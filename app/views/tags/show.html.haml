@@ -1,0 +1,13 @@
+.jumbotron
+  .container.text-center
+    = image_tag("header_logo.png", alt: "PROTO TYPE - SHARE THE PROTOTYPE", height: "73px")
+
+.filter-nav
+  .container.proto-list
+    %h2 Prototype List
+    .row
+      = render partial: 'prototypes/prototype', collection: @prototypes
+  .text-center
+    %ul.pagination
+      %li.disabled
+        = paginate @prototypes
