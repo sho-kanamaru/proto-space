@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resources :newest, only: :index
   end
 
+  resources :tags, only: [:index, :show]
+
   resources :prototypes, except: :index do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: :create

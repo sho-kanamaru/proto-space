@@ -1,0 +1,23 @@
+.tags-list {
+  ul {
+    list-style: none;
+    overflow: hidden;
+    padding: 0;
+    margin: 30px 0;
+    li.col-md-4{
+      margin-bottom: 10px;
+      a.button.btn.btn-default{
+        display: block;
+        text-align: left;
+        padding: 20px;
+        border-radius: 3px;
+        &:hover {
+        color: $light_blue;
+        background: $white;
+        font-weight: bold;
+        }
+      }
+    }
+  }
+}
+

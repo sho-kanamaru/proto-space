@@ -51,11 +51,11 @@ class PrototypesController < ApplicationController
 
   private
     def create_params
-      params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:content, :status])
+      params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:content, :status]).merge(tag_list: params[:prototype][:tag])
     end
 
     def update_params
-      params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:id, :content, :status])
+      params.require(:prototype).permit(:title, :catch_copy, :concept, captured_images_attributes: [:id, :content, :status]).merge(tag_list: params[:prototype][:tag])
     end
 
     def set_prototype
