@@ -1,5 +1,5 @@
 %li.list-group-item.col-md-4.hide-form
   .image-upload
     = f.fields_for :captured_images, @prototype.captured_images.build do |image|
-        = image.file_field :content
-        = image.hidden_field :status, value: :sub
+      = image.file_field :content
+      = image.hidden_field :status, value: :sub
