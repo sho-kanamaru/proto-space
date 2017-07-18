@@ -21,7 +21,6 @@
               %li.list-group-item.col-md-4
                 .image-upload
                   = f.fields_for :captured_images, sub_image do |image|
-                    .js-sub-image-uploader
                       = image_tag sub_image.content, class: "current_image"
                       = image.file_field :content
                       = image.hidden_field :status, value: :sub
