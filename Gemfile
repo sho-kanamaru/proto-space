@@ -16,6 +16,7 @@ gem 'pry-rails'
 gem 'carrierwave'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 4.0'
+gem 'jquery-turbolinks'
 
 group :development, :test do
   gem 'byebug', platform: :mri

@@ -446,6 +446,23 @@ body {
     }
   }
 
+  .js-main-image-uploader {
+    height: 500px;
+  }
+
+  .js-sub-image-uploader {
+    height: 200px;
+  }
+
+  .list-group-item.col-md-4.appear-form{
+    list-style: none;
+  }
+
+  .list-group-item.col-md-4.hide-form{
+    display: none;
+    list-style: none;
+  }
+
   .list-group-item {
     border: 0;
     margin-bottom: 20px;
