@@ -17,6 +17,7 @@ gem 'carrierwave'
 gem 'kaminari'
 gem 'acts-as-taggable-on', '~> 4.0'
 gem 'jquery-turbolinks'
+gem 'fog'
 
 group :development, :test do
   gem 'byebug', platform: :mri
