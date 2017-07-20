@@ -9,4 +9,6 @@ class User < ApplicationRecord
   has_many :prototypes
   has_many :likes
   has_many :comments
+
+  mount_uploader :image, ImageUploader
 end
