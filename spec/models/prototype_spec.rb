@@ -63,5 +63,11 @@ describe Prototype do
         expect(prototype.like_user(user)).to be_truthy
       end
     end
+
+    context 'when not liked by a user' do
+      it "returns nil" do
+        expect(prototype.like_user(user)).to be_falsey
+      end
+    end
   end
 end
