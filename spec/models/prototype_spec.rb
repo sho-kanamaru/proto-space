@@ -20,4 +20,12 @@ describe Prototype do
       end
     end
   end
+
+  describe 'associations' do
+    context 'with valid attributes' do
+      it "has a valid factory" do
+        expect(prototype).to be_valid
+      end
+    end
+  end
 end
