@@ -18,6 +18,12 @@ describe User do
         user.valid?
         expect(user.errors[:name]).to include("can't be blank")
       end
+
+      it 'is invalid without an email' do
+        user.name = nil
+        user.valid?
+        expect(user.errors[:name]).to include("can't be blank")
+      end
     end
   end
 end
