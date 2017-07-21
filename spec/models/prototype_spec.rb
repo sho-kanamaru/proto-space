@@ -40,6 +40,12 @@ describe Prototype do
         prototype.valid?
         expect(prototype.errors[:catch_copy]).to include("can't be blank")
       end
+
+      it "is missing concept" do
+        prototype.concept = nil
+        prototype.valid?
+        expect(prototype.errors[:concept]).to include("can't be blank")
+      end
     end
   end
 end
