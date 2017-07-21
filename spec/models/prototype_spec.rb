@@ -70,4 +70,10 @@ describe Prototype do
       end
     end
   end
+
+  describe '#get_main_images' do
+    it "returns an array containing main_images" do
+      expect(prototype.get_main_content.model).to eq prototype.captured_images.main.first.content.model
+    end
+  end
 end
