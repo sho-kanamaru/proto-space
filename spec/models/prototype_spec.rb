@@ -55,4 +55,13 @@ describe Prototype do
       expect(prototype_date(prototype)).to eq('Jul 16')
     end
   end
+
+  describe '#liked_by(user)' do
+    context 'when liked by a user' do
+      it "returns true" do
+        like = create(:like, prototype: prototype, user: user)
+        expect(prototype.like_user(user)).to be_truthy
+      end
+    end
+  end
 end
