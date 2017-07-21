@@ -83,4 +83,13 @@ describe Prototype do
       expect(prototype.get_sub_contents).to match_array prototype.captured_images.sub
     end
   end
+
+  describe '#reject_sub_images(attributed)' do
+    it "doesn't save a record with nil content" do
+      build(:captured_image, :sub_image, prototype: prototype, content: nil)
+      expect {
+        prototype.update_attributes!("captured_images_attributes"=>{"0"=>{}})
+      }.to_not change(CapturedImage, :count)
+    end
+  end
 end
