@@ -27,5 +27,13 @@ describe Prototype do
         expect(prototype).to be_valid
       end
     end
+
+    context 'without valid attributes' do
+      it "is missing title" do
+        prototype.title = nil
+        prototype.valid?
+        expect(prototype.errors[:title]).to include("can't be blank")
+      end
+    end
   end
 end
