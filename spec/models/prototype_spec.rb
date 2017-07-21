@@ -48,4 +48,11 @@ describe Prototype do
       end
     end
   end
+
+  describe '#posted_date' do
+    it "returns dates in a specified format" do
+      prototype.created_at = '2017-07-16 13:25:10'
+      expect(prototype_date(prototype)).to eq('Jul 16')
+    end
+  end
 end
