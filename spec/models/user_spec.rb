@@ -43,6 +43,13 @@ describe User do
         user.valid?
         expect(user.errors[:email]).to include("has already been taken")
       end
+
+      it "is invalid with a password that has less than 7 characters" do
+        user.password = "0000000"
+        user.password_confirmation = "0000000"
+        user.valid?
+        expect(user.errors[:password]).to include("is too short (minimum is 8 characters)")
+      end
     end
   end
 end
