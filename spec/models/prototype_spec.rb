@@ -76,4 +76,11 @@ describe Prototype do
       expect(prototype.get_main_content.model).to eq prototype.captured_images.main.first.content.model
     end
   end
+
+  describe '#get_sub_images' do
+    it "returns an array containing sub_images" do
+      create(:captured_image, :sub_image, prototype: prototype)
+      expect(prototype.get_sub_contents).to match_array prototype.captured_images.sub
+    end
+  end
 end
