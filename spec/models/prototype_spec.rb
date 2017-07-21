@@ -34,6 +34,12 @@ describe Prototype do
         prototype.valid?
         expect(prototype.errors[:title]).to include("can't be blank")
       end
+
+      it "is missing catch_copy" do
+        prototype.catch_copy = nil
+        prototype.valid?
+        expect(prototype.errors[:catch_copy]).to include("can't be blank")
+      end
     end
   end
 end
