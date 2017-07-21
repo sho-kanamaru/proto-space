@@ -76,6 +76,11 @@ GEM
     erubis (2.7.0)
     excon (0.57.1)
     execjs (2.7.0)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     ffi (1.9.18)
     fission (0.5.0)
       CFPropertyList (~> 2.2)
@@ -401,6 +406,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   erb2haml
+  factory_girl_rails
   fog
   haml-rails
   jbuilder (~> 2.5)
