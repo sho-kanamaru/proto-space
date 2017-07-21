@@ -36,6 +36,13 @@ describe User do
         user.valid?
         expect(user.errors[:password_confirmation]).to include("doesn't match Password")
       end
+
+      it 'is invalid with a duplicate email adress' do
+        another_user = create(:user)
+        user.email = another_user.email
+        user.valid?
+        expect(user.errors[:email]).to include("has already been taken")
+      end
     end
   end
 end
