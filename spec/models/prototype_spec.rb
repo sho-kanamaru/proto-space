@@ -12,5 +12,12 @@ describe Prototype do
         expect{ prototype.destroy }.to change(Comment, :count).by(-1)
       end
     end
+
+    context 'with likes' do
+      it "deletes the likes when prototype is deleted" do
+        like = create(:like, prototype: prototype, user: user)
+        expect{ prototype.destroy }.to change(Like, :count).by(-1)
+      end
+    end
   end
 end
