@@ -11,5 +11,13 @@ describe CapturedImage do
         expect(image).to be_valid
       end
     end
+
+    context 'without content attributes' do
+      it "returns error" do
+        image.content = nil
+        image.valid?
+        expect(image.errors[:content]).to include("can't be blank")
+      end
+    end
   end
 end
