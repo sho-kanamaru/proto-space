@@ -1,9 +1,5 @@
-require 'rails_helper'
 require 'helpers'
-
-RSpec.configure do |c|
-  c.include Helpers
-end
+require 'rails_helper'
 
 describe Prototype do
 
