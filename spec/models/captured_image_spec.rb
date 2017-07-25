@@ -1,10 +1,18 @@
 require 'rails_helper'
+include ActionDispatch::TestProcess
 
 describe CapturedImage do
 
   let(:image) { build(:captured_image, :main_image) }
 
   describe '#create' do
+
+    it "has the wrong content format" do
+      image.content = fixture_file_upload("spec/fixtures/img/TECHCAMP.tiff", 'image/tiff')
+      image.valid?
+      binding.pry
+      expect(image.errors[:content]).to include("translation missing: en.errors.messages.extension_whitelist_error")
+    end
 
     context 'with valid attributes' do
       it "has a valid factory" do
