@@ -18,4 +18,4 @@
 
 /app/assets/images/*
 /public/uploads/*
-/spec/fixtures/img/*
+/spec/fixtures/*
