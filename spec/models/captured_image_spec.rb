@@ -10,7 +10,6 @@ describe CapturedImage do
     it "has the wrong content format" do
       image.content = fixture_file_upload("spec/fixtures/img/TECHCAMP.tiff", 'image/tiff')
       image.valid?
-      binding.pry
       expect(image.errors[:content]).to include("translation missing: en.errors.messages.extension_whitelist_error")
     end
 
