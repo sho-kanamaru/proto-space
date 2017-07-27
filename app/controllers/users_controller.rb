@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to root_path, notice: "edited your account in successfully."
     else
+      flash.now[:alert] = "cannot updated your account"
       render :edit
     end
   end
