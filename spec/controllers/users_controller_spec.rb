@@ -76,7 +76,6 @@ describe UsersController, type: :controller do
 
         before do
           patch :update, params: { id: user, user: { name: "", email: "hoge@gmail.com", group: "techcamp", profile: "expert", works: "mentor" } }
-          @originalname = user.name
         end
 
         it 'assigns the requested to @user' do
@@ -84,8 +83,9 @@ describe UsersController, type: :controller do
         end
 
         it 'does not update the new account' do
+          originalname = user.name
           user.reload
-          expect(user.name).to eq @originalname
+          expect(user.name).to eq originalname
         end
 
         it 'renders the :edit template' do
