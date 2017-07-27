@@ -7,6 +7,21 @@ describe CapturedImage do
 
   describe '#create' do
 
+    it "has a valid format jpg" do
+      image.content = fixture_file_upload("spec/fixtures/img/TECHCAMP.jpg", 'image/jpg')
+      expect(image).to be_valid
+    end
+
+    it "has a valid format jpeg" do
+      image.content = fixture_file_upload("spec/fixtures/img/TECHCAMP.jpeg", 'image/jpeg')
+      expect(image).to be_valid
+    end
+
+    it "has a valid format gif" do
+      image.content = fixture_file_upload("spec/fixtures/img/TECHCAMP.gif", 'image/gif')
+      expect(image).to be_valid
+    end
+
     it "has the wrong content format" do
       image.content = fixture_file_upload("spec/fixtures/img/TECHCAMP.tiff", 'image/tiff')
       image.valid?
