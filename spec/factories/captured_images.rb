@@ -1,7 +1,9 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
 
   factory :captured_image do
-    content       File.open("#{Rails.root}/public/images/TECHCAMP.png")
+    content    { fixture_file_upload("spec/fixtures/img/TECHCAMP.png", 'image/png') }
     prototype
 
     trait :main_image do

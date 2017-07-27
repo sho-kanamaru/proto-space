@@ -4,4 +4,6 @@ class CapturedImage < ApplicationRecord
   enum status: %w(main sub)
 
   belongs_to :prototype, optional: true
+
+  validates :content, :status, presence: true
 end

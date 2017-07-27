@@ -1,4 +1,3 @@
-require 'helpers'
 require 'rails_helper'
 
 describe Prototype do
