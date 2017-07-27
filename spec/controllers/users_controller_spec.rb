@@ -117,12 +117,11 @@ describe UsersController, type: :controller do
 
      describe 'PATCH #update' do
 
-      subject {
-        Proc.new { patch :update, params: { id: user, user: { name: "sho", email: "hoge@gmail.com", group: "techcamp", profile: "expert", works: "mentor" } } }
-      }
+      before do
+        patch :update, params: { id: user, user: { name: "sho", email: "hoge@gmail.com", group: "techcamp", profile: "expert", works: "mentor" } }
+      end
 
       it 'redirects sign_in page' do
-        subject.call
         expect(response).to redirect_to new_user_session_path
       end
     end
