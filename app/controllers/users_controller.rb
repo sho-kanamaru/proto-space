@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    @prototypes = @user.prototypes.page(params[:page]).per(8)
+    @prototypes = @user.prototypes.page(params[:page]).like
   end
 
   def edit
