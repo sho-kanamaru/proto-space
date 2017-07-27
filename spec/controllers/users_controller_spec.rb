@@ -46,17 +46,15 @@ describe UsersController, type: :controller do
     describe 'PATCH #update' do
       context 'with valid attributes' do
 
-        subject {
-          Proc.new { patch :update, params: { id: user, user: { name: "sho", email: "hoge@gmail.com", group: "techcamp", profile: "expert", works: "mentor" } } }
-        }
+        before do
+          patch :update, params: { id: user, user: { name: "sho", email: "hoge@gmail.com", group: "techcamp", profile: "expert", works: "mentor" } }
+        end
 
         it 'assigns the requested to @user' do
-          subject.call
           expect(assigns(:user)).to eq user
         end
 
         it "changes @user's attributes" do
-          subject.call
           user.reload
           expect(user.name).to eq("sho")
           expect(user.email).to eq("hoge@gmail.com")
@@ -66,12 +64,10 @@ describe UsersController, type: :controller do
         end
 
         it 'redirects root path' do
-          subject.call
           expect(response).to redirect_to root_path
         end
 
         it 'shows flash messages to show update account successfully' do
-          subject.call
           expect(flash[:notice]).to eq 'edited your account in successfully.'
         end
       end
