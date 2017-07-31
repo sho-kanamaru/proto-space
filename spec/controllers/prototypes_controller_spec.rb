@@ -244,5 +244,12 @@ describe PrototypesController, type: :controller do
         expect(response).to redirect_to new_user_session_path
       end
     end
+
+    describe 'PATCH #update' do
+      it 'redirects sign_in page' do
+        patch :update, params: { id: prototype, prototype: attributes_for(:prototype) }
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
   end
 end
