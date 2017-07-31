@@ -116,5 +116,24 @@ describe PrototypesController, type: :controller do
       end
     end
 
+    describe 'GET #edit' do
+
+      before do
+        get :edit, params: { id: prototype }
+      end
+
+      it 'assigns the requested prototype to @prototype' do
+        expect(assigns(:prototype)).to eq prototype
+      end
+
+      it 'assigns sub_images to @sub_images' do
+        expect(assigns(:sub_images)).to eq prototype.captured_images.sub
+      end
+
+      it 'renders the :edit template' do
+        expect(response).to render_template :edit
+      end
+    end
+
   end
 end
