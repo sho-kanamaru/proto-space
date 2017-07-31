@@ -165,6 +165,31 @@ describe PrototypesController, type: :controller do
           expect(flash[:notice]).to eq 'Prototype was successfully updated.'
         end
       end
+
+      context 'with invalid attributes' do
+
+        before do
+          patch :update, params: { id: prototype, prototype: attributes_for(:prototype, title: "") }
+          @originaltitle = prototype.title
+        end
+
+        it 'assigns the requested prototypes to @prototypes' do
+          expect(assigns(:prototype)).to eq prototype
+        end
+
+        it 'does not save the new prototype' do
+          prototype.reload
+          expect(prototype.title).to eq @originaltitle
+        end
+
+        it 'renders the :show template' do
+          expect(response).to render_template :edit
+        end
+
+        it 'shows flash messages to show update prototype unsuccessfully' do
+          expect(flash[:alert]).to eq 'cannot updated your prototype'
+        end
+      end
     end
 
   end
