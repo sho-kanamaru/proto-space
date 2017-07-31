@@ -230,5 +230,12 @@ describe PrototypesController, type: :controller do
         expect(response).to redirect_to new_user_session_path
       end
     end
+
+    describe 'POST #create' do
+      it 'redirects sign_in page' do
+        post :create, params: { prototype: attributes_for(:prototype) }
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
   end
 end
