@@ -221,6 +221,14 @@ describe PrototypesController, type: :controller do
         expect(flash[:notice]).to eq 'Prototype was successfully deleted.'
       end
     end
+  end
 
+  context 'without user login' do
+    describe 'GET #new' do
+      it 'redirects sign_in page' do
+        get :new
+        expect(response).to redirect_to new_user_session_path
+      end
+    end
   end
 end
