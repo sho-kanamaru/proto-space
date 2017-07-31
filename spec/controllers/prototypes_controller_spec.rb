@@ -63,6 +63,27 @@ describe PrototypesController, type: :controller do
           expect(flash[:notice]).to eq 'posted your prototype in successfully.'
         end
       end
+
+      context 'with invalid attributes' do
+
+        subject {
+          Proc.new { post :create, params: { prototype: attributes_for(:prototype, title: "") } }
+        }
+
+        it 'does not save the new prototype in the database' do
+          expect{ subject.call }.not_to change(Prototype, :count)
+        end
+
+        it 'redirects new_prototype_path' do
+          subject.call
+          expect(response).to render_template :new
+        end
+
+        it 'shows flash messages to show save the prototype unsuccessfully' do
+          subject.call
+          expect(flash[:alert]).to eq 'cannot posted your prototype'
+        end
+      end
     end
 
   end
