@@ -135,5 +135,37 @@ describe PrototypesController, type: :controller do
       end
     end
 
+    describe 'PATCH #update' do
+      context 'with valid attributes' do
+
+      subject {
+        Proc.new { patch :update, params: { id: prototype, prototype: attributes_for(:prototype, title: "sho", catch_copy: "techcamp", concept: "expert") } }
+      }
+
+        it 'assigns the requested prototype to @prototype' do
+          subject.call
+          expect(assigns(:prototype)).to eq prototype
+        end
+
+        it 'updates attributes of prototype' do
+          subject.call
+          prototype.reload
+          expect(prototype.title).to eq("sho")
+          expect(prototype.catch_copy).to eq("techcamp")
+          expect(prototype.concept).to eq("expert")
+        end
+
+        it 'redirects to prototype_path' do
+          subject.call
+          expect(response).to redirect_to root_path
+        end
+
+        it 'shows flash messages to show update prototype successfully' do
+          subject.call
+          expect(flash[:notice]).to eq 'Prototype was successfully updated.'
+        end
+      end
+    end
+
   end
 end
