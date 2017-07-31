@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
+  before_action :authenticate_user!
 
   def show
-    @prototypes = @user.prototypes.page(params[:page]).per(8)
+    @prototypes = @user.prototypes.page(params[:page]).like
   end
 
   def edit
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
     if @user.update(user_params)
       redirect_to root_path, notice: "edited your account in successfully."
     else
+      flash.now[:alert] = "cannot updated your account."
       render :edit
     end
   end
