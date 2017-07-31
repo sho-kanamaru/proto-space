@@ -87,5 +87,34 @@ describe PrototypesController, type: :controller do
       end
     end
 
+    describe 'GET #show' do
+
+      let!(:like) { create(:like, prototype: prototype, user: user) }
+
+      before do
+        get :show, params: { id: prototype }
+      end
+
+      it 'assigns the requested prototype to @prototype' do
+        expect(assigns(:prototype)).to eq prototype
+      end
+
+      it 'assigns the requested comment to @comment' do
+        expect(assigns(:comment)).to be_a_new(Comment)
+      end
+
+      it 'assigns the requested comments to @comments' do
+        expect(assigns(:comments)).to eq comments
+      end
+
+      it 'assigns likes associated with prototype to @likes' do
+        expect(assigns(:like)).to eq like
+      end
+
+      it 'renders the :show template' do
+        expect(response).to render_template :show
+      end
+    end
+
   end
 end
