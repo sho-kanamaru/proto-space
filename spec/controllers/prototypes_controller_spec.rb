@@ -27,6 +27,21 @@ describe PrototypesController, type: :controller do
       end
     end
 
+    describe 'GET #new' do
+
+      before do
+        get :new
+      end
+
+      it 'assigns the requested prototype to @prototype' do
+         expect(assigns(:prototype)).to be_a_new(Prototype)
+      end
+
+      it 'renders the :new template' do
+        expect(response).to render_template :new
+      end
+    end
+
   end
 
 end
