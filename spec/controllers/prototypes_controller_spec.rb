@@ -5,6 +5,7 @@ describe PrototypesController, type: :controller do
   let(:user) { create(:user) }
   let(:prototype) { create(:prototype, user: user) }
   let(:prototypes) { create_list(:prototype, 3) }
+  let(:comments) { create_list(:comment, 3, prototype: prototype, user: user) }
 
   context 'with user login' do
 
