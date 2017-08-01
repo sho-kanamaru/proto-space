@@ -170,7 +170,6 @@ describe PrototypesController, type: :controller do
 
         before do
           patch :update, params: { id: prototype, prototype: attributes_for(:prototype, title: "") }
-          @originaltitle = prototype.title
         end
 
         it 'assigns the requested prototypes to @prototypes' do
@@ -178,6 +177,7 @@ describe PrototypesController, type: :controller do
         end
 
         it 'does not save the new prototype' do
+          @originaltitle = prototype.title
           prototype.reload
           expect(prototype.title).to eq @originaltitle
         end
