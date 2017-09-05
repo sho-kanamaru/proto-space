@@ -10,6 +10,7 @@ if(window.File) {
           current_image.remove();
         }
         var fileData = image.files[0];
+        console.log(fileData);
         var imgType = fileData.type;
 
         // 選択されたファイルが画像かどうか確認
